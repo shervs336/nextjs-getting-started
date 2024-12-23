@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Image from "next/image";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,11 +25,71 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
+    <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    >
+    <nav className="bg-amber-500 py-4">
+        <div className="container mx-auto flex justify-between items-center">
+            <a href="#" className="text-lg font-bold text-black">Logo</a>
+            <ul className="flex items-center space-x-4">
+                <li><a href="/" className="text-black hover:text-gray-300">Home</a></li>
+                <li><a href="/about" className="text-black hover:text-gray-300">About</a></li>
+                <li><a href="/blog" className="text-black hover:text-gray-300">Blog</a></li>
+                <li><a href="/contact" className="text-black hover:text-gray-300">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    {children}
+
+    <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+        <a
+            className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <Image
+                aria-hidden
+                src="/file.svg"
+                alt="File icon"
+                width={16}
+                height={16}
+            />
+            Learn
+        </a>
+        <a
+            className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <Image
+                aria-hidden
+                src="/window.svg"
+                alt="Window icon"
+                width={16}
+                height={16}
+            />
+            Examples
+        </a>
+        <a
+            className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+            href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <Image
+                aria-hidden
+                src="/globe.svg"
+                alt="Globe icon"
+                width={16}
+                height={16}
+            />
+            Go to nextjs.org →
+        </a>
+    </footer>
+    </body>
     </html>
   );
 }
